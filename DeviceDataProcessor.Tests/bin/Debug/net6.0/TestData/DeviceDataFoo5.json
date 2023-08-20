@@ -1,0 +1,43 @@
+{
+  "CompanyId": 2,
+  "Company": "Foo2",
+  "Devices": [
+    {
+      "DeviceID": 1,
+      "Name": "XYZ-100",
+      "StartDateTime": "08-18-2020 10:30:00",
+      "SensorData": [
+        {
+          "SensorType": "TEMP",
+          "DateTime": "08-18-2020 10:35:00",
+          "Value": 35
+        },
+        {
+          "SensorType": "TEMP",
+          "DateTime": "08-18-2020 10:40:00",
+          "Value": 36
+        },
+        {
+          "SensorType": "TEMP",
+          "DateTime": "08-18-2020 10:45:00",
+          "Value": 37
+        },
+        {
+          "SensorType": "HUM",
+          "DateTime": "08-18-2020 10:35:00",
+          "Value": 89
+        },
+        {
+          "SensorType": "HUM",
+          "DateTime": "08-18-2020 10:40:00",
+          "Value": 90
+        },
+        {
+          "SensorType": "HUM",
+          "DateTime": "08-18-2020 10:45:00",
+          "Value": 91
+        }
+      ]
+    }
+  ]
+}

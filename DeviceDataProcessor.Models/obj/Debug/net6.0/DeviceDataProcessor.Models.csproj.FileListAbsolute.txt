@@ -1,0 +1,12 @@
+/Users/aaron/Documents/Development/Projects/DeviceDataProcessor/DeviceDataProcessor.Models/bin/Debug/net6.0/DeviceDataProcessor.Models.deps.json
+/Users/aaron/Documents/Development/Projects/DeviceDataProcessor/DeviceDataProcessor.Models/bin/Debug/net6.0/DeviceDataProcessor.Models.dll
+/Users/aaron/Documents/Development/Projects/DeviceDataProcessor/DeviceDataProcessor.Models/bin/Debug/net6.0/DeviceDataProcessor.Models.pdb
+/Users/aaron/Documents/Development/Projects/DeviceDataProcessor/DeviceDataProcessor.Models/obj/Debug/net6.0/DeviceDataProcessor.Models.csproj.AssemblyReference.cache
+/Users/aaron/Documents/Development/Projects/DeviceDataProcessor/DeviceDataProcessor.Models/obj/Debug/net6.0/DeviceDataProcessor.Models.GeneratedMSBuildEditorConfig.editorconfig
+/Users/aaron/Documents/Development/Projects/DeviceDataProcessor/DeviceDataProcessor.Models/obj/Debug/net6.0/DeviceDataProcessor.Models.AssemblyInfoInputs.cache
+/Users/aaron/Documents/Development/Projects/DeviceDataProcessor/DeviceDataProcessor.Models/obj/Debug/net6.0/DeviceDataProcessor.Models.AssemblyInfo.cs
+/Users/aaron/Documents/Development/Projects/DeviceDataProcessor/DeviceDataProcessor.Models/obj/Debug/net6.0/DeviceDataProcessor.Models.csproj.CoreCompileInputs.cache
+/Users/aaron/Documents/Development/Projects/DeviceDataProcessor/DeviceDataProcessor.Models/obj/Debug/net6.0/DeviceDataProcessor.Models.dll
+/Users/aaron/Documents/Development/Projects/DeviceDataProcessor/DeviceDataProcessor.Models/obj/Debug/net6.0/refint/DeviceDataProcessor.Models.dll
+/Users/aaron/Documents/Development/Projects/DeviceDataProcessor/DeviceDataProcessor.Models/obj/Debug/net6.0/DeviceDataProcessor.Models.pdb
+/Users/aaron/Documents/Development/Projects/DeviceDataProcessor/DeviceDataProcessor.Models/obj/Debug/net6.0/ref/DeviceDataProcessor.Models.dll

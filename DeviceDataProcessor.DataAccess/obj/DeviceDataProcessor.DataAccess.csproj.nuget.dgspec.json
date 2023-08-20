@@ -1,0 +1,124 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/aaron/Documents/Development/Projects/DeviceDataProcessor/DeviceDataProcessor.DataAccess/DeviceDataProcessor.DataAccess.csproj": {}
+  },
+  "projects": {
+    "/Users/aaron/Documents/Development/Projects/DeviceDataProcessor/DeviceDataProcessor.DataAccess/DeviceDataProcessor.DataAccess.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/aaron/Documents/Development/Projects/DeviceDataProcessor/DeviceDataProcessor.DataAccess/DeviceDataProcessor.DataAccess.csproj",
+        "projectName": "DeviceDataProcessor.DataAccess",
+        "projectPath": "/Users/aaron/Documents/Development/Projects/DeviceDataProcessor/DeviceDataProcessor.DataAccess/DeviceDataProcessor.DataAccess.csproj",
+        "packagesPath": "/Users/aaron/.nuget/packages/",
+        "outputPath": "/Users/aaron/Documents/Development/Projects/DeviceDataProcessor/DeviceDataProcessor.DataAccess/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/aaron/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "/Users/aaron/Documents/Development/Projects/DeviceDataProcessor/DeviceDataProcessor.Models/DeviceDataProcessor.Models.csproj": {
+                "projectPath": "/Users/aaron/Documents/Development/Projects/DeviceDataProcessor/DeviceDataProcessor.Models/DeviceDataProcessor.Models.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.404/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/aaron/Documents/Development/Projects/DeviceDataProcessor/DeviceDataProcessor.Models/DeviceDataProcessor.Models.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/aaron/Documents/Development/Projects/DeviceDataProcessor/DeviceDataProcessor.Models/DeviceDataProcessor.Models.csproj",
+        "projectName": "DeviceDataProcessor.Models",
+        "projectPath": "/Users/aaron/Documents/Development/Projects/DeviceDataProcessor/DeviceDataProcessor.Models/DeviceDataProcessor.Models.csproj",
+        "packagesPath": "/Users/aaron/.nuget/packages/",
+        "outputPath": "/Users/aaron/Documents/Development/Projects/DeviceDataProcessor/DeviceDataProcessor.Models/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/aaron/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[9.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.404/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

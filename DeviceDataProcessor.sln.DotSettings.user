@@ -1,0 +1,15 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=5f030d38_002D381c_002D4d47_002D924b_002D3741b9b1ecd1/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="ValidJson_ShouldReturnCombinedList" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::B2B354A6-EDBD-4034-B181-2A0B18F1C0E9::net6.0::DeviceDataProcessor.Tests.DeviceDataConversationServiceTests.ValidJson_ShouldReturnCombinedList&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::B2B354A6-EDBD-4034-B181-2A0B18F1C0E9::net6.0::DeviceDataProcessor.Tests.DeviceDataConversationServiceTests.InvalidJson&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::B2B354A6-EDBD-4034-B181-2A0B18F1C0E9::net6.0::DeviceDataProcessor.Tests.DeviceDataConversationServiceTests.Test&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::B2B354A6-EDBD-4034-B181-2A0B18F1C0E9::net6.0::DeviceDataProcessor.Tests.DeviceDataConversationServiceTests.InvalidSchema&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::B2B354A6-EDBD-4034-B181-2A0B18F1C0E9::net6.0::DeviceDataProcessor.Tests.DeviceDataConversationServiceTests.ValidJson_TwoFilesWithDifferentSchemas_ShouldReturnCombinedList&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::B2B354A6-EDBD-4034-B181-2A0B18F1C0E9::net6.0::DeviceDataProcessor.Tests.TestData.UniversalDeviceData_Tests.ConvertToUniversalFromFoo1_CorrectData&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::B2B354A6-EDBD-4034-B181-2A0B18F1C0E9::net6.0::DeviceDataProcessor.Tests.TestData.UniversalDeviceDataTests.ConvertToUniversalFromFoo1_CorrectData&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::B2B354A6-EDBD-4034-B181-2A0B18F1C0E9::net6.0::DeviceDataProcessor.Tests.TestData.UniversalDeviceDataTests.ConvertToUniversalFromFoo2_CorrectData&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::B2B354A6-EDBD-4034-B181-2A0B18F1C0E9::net6.0::DeviceDataProcessor.Tests.DeviceDataConversationServiceTests.ValidJson_TwoFilesWithSameSchema_ShouldReturnCombinedList&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::B2B354A6-EDBD-4034-B181-2A0B18F1C0E9::net6.0::DeviceDataProcessor.Tests.DeviceDataConversationServiceTests.ValidJson_ThreeFiles_ShouldReturnCombinedList&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
