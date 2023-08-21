@@ -27,38 +27,12 @@
         {
           "Id": 200,
           "Name": "Temperature",
-          "Crumbs": [
-            {
-              "CreatedDtm": "08-18-2020 10:35:00",
-              "Value": 23.15
-            },
-            {
-              "CreatedDtm": "08-18-2020 10:40:00",
-              "Value": 24.15
-            },
-            {
-              "CreatedDtm": "08-18-2020 10:45:00",
-              "Value": 25.15
-            }
-          ]
+          "Crumbs": []
         },
         {
           "Id": 201,
           "Name": "Humidty",
-          "Crumbs": [
-            {
-              "CreatedDtm": "08-18-2020 10:35:00",
-              "Value": 81.5
-            },
-            {
-              "CreatedDtm": "08-18-2020 10:40:00",
-              "Value": 82.5
-            },
-            {
-              "CreatedDtm": "08-18-2020 10:45:00",
-              "Value": 83.5
-            }
-          ]
+          "Crumbs": []
         }
       ]
     }

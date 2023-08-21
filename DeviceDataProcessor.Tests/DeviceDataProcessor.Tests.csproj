@@ -45,6 +45,9 @@
       <None Update="TestData\DeviceDataFoo6-NoSensorData.json">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
+      <None Update="TestData\DeviceDataFoo7-NoTrackers.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
     <ItemGroup>

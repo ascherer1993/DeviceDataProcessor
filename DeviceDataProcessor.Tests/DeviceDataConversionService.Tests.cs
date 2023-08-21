@@ -18,6 +18,8 @@ public class DeviceDataConversationServiceTests
     private string _invalidJsonFoo3;
     private string _badJsonFoo4;
     private string _validJsonFoo5;
+    private string _validJsonFoo6_NoSensorData;
+    private string _validJsonFoo7_NoTrackers;
     
     public DeviceDataConversationServiceTests()
     {
@@ -42,6 +44,8 @@ public class DeviceDataConversationServiceTests
         _invalidJsonFoo3 = GetJsonFromFileIfExists(currentPath + "/TestData/DeviceDataFoo3-InvalidSchema.json");
         _badJsonFoo4 = GetJsonFromFileIfExists(currentPath + "/TestData/DeviceDataFoo4-BadJson.json");
         _validJsonFoo5 = GetJsonFromFileIfExists(currentPath + "/TestData/DeviceDataFoo5.json");
+        _validJsonFoo6_NoSensorData = GetJsonFromFileIfExists(currentPath + "/TestData/DeviceDataFoo6-NoSensorData.json");
+        _validJsonFoo7_NoTrackers = GetJsonFromFileIfExists(currentPath + "/TestData/DeviceDataFoo7-NoTrackers.json");
     }
 
     private string GetJsonFromFileIfExists(string path)
@@ -166,7 +170,7 @@ public class DeviceDataConversationServiceTests
     /// Checks what repo is called with since method returns the response from repo
     /// </summary>
     [Fact]
-    public void BadJson()
+    public void BadJson_FileIsSkipped()
     {
         //Act
         _sut.ConvertJsonToUnifiedDeviceData(_validJsonFoo1, _badJsonFoo4);
@@ -179,5 +183,57 @@ public class DeviceDataConversationServiceTests
                 It.IsAny<Exception>(),
                 It.IsAny<Func<It.IsAnyType, Exception, string>>()),
             Times.Once);
+    }
+    
+    /// <summary>
+    /// Sends two json files. One of the files contains no sensor data and is skipped
+    /// Checks what repo is called with since method returns the response from repo
+    /// </summary>
+    [Fact]
+    public void NoSensorData_FileIsIgnored()
+    {
+        //Act
+        _sut.ConvertJsonToUnifiedDeviceData(_validJsonFoo1, _validJsonFoo6_NoSensorData);
+        
+        //Assert
+        _dataRepository.Verify(f => f.AddDeviceDataRangeAndSave(It.Is<List<UniversalDeviceData>>(deviceDataList =>
+            deviceDataList.Count == 2
+            && deviceDataList.Count(universalDeviceData => universalDeviceData.CompanyName == "Foo1") == 2
+        )), Times.Once);
+
+        _logger.Verify(logger => logger.Log(
+                It.Is<LogLevel>(logLevel =>
+                    logLevel == LogLevel.Warning || logLevel == LogLevel.Error || logLevel == LogLevel.Critical),
+                It.IsAny<EventId>(),
+                It.IsAny<It.IsAnyType>(),
+                It.IsAny<Exception>(),
+                It.IsAny<Func<It.IsAnyType, Exception, string>>()),
+            Times.Never);
+    }
+    
+    /// <summary>
+    /// Sends two json files. One of the files contains no trackers and is skipped
+    /// Checks what repo is called with since method returns the response from repo
+    /// </summary>
+    [Fact]
+    public void NoTrackers_FileIsIgnored()
+    {
+        //Act
+        _sut.ConvertJsonToUnifiedDeviceData(_validJsonFoo1, _validJsonFoo7_NoTrackers);
+        
+        //Assert
+        _dataRepository.Verify(f => f.AddDeviceDataRangeAndSave(It.Is<List<UniversalDeviceData>>(deviceDataList =>
+            deviceDataList.Count == 2
+            && deviceDataList.Count(universalDeviceData => universalDeviceData.CompanyName == "Foo1") == 2
+        )), Times.Once);
+
+        _logger.Verify(logger => logger.Log(
+                It.Is<LogLevel>(logLevel =>
+                    logLevel == LogLevel.Warning || logLevel == LogLevel.Error || logLevel == LogLevel.Critical),
+                It.IsAny<EventId>(),
+                It.IsAny<It.IsAnyType>(),
+                It.IsAny<Exception>(),
+                It.IsAny<Func<It.IsAnyType, Exception, string>>()),
+            Times.Never);
     }
 }

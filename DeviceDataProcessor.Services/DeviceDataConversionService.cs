@@ -30,11 +30,9 @@ public class DeviceDataConversionService : IDeviceDataConversionService
             _logger.LogWarning("No json strings were received. Not creating a file and returning.");
             return new List<UniversalDeviceData>();
         }
-
-        List<UniversalDeviceData> returnList = new List<UniversalDeviceData>();
+        
         List<UniversalDeviceData> newUniversalDeviceData = new List<UniversalDeviceData>();
-        
-        
+
         foreach (var jsonContent in jsonFiles)
         {
             JObject jsonObject;
@@ -98,7 +96,7 @@ public class DeviceDataConversionService : IDeviceDataConversionService
             }
         }
         
-        returnList = _dataRepository.AddDeviceDataRangeAndSave(newUniversalDeviceData);
+        List<UniversalDeviceData> returnList = _dataRepository.AddDeviceDataRangeAndSave(newUniversalDeviceData);
 
         return returnList;
     }

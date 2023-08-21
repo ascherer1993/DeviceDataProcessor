@@ -34,23 +34,41 @@ public class UniversalDeviceData
             universalDeviceData.CompanyName = dto.PartnerName;
             universalDeviceData.DeviceId = tracker.Id;
             universalDeviceData.DeviceName = tracker.Model;
-            universalDeviceData.FirstReadingDtm = tracker.Sensors.SelectMany(f => f.Crumbs).Min(f => f.CreatedDtm);
-            universalDeviceData.LastReadingDtm = tracker.Sensors.SelectMany(f => f.Crumbs).Max(f => f.CreatedDtm);
+            
+            //Could have an empty list of sensors
+            if (!tracker.Sensors.Any())
+            {
+                universalDeviceData.TemperatureCount = 0;
+                universalDeviceData.HumidityCount = 0;
+                continue;
+            }
+            
+            universalDeviceData.TemperatureCount =
+                tracker.Sensors.FirstOrDefault(f => f.Name == ModelConstants.FOO1_TEMPERATURE)?.Crumbs.Count;
+            
+            universalDeviceData.HumidityCount = tracker.Sensors
+                .FirstOrDefault(f => f.Name == ModelConstants.FOO1_HUMIDTY || f.Name == ModelConstants.FOO1_HUMIDITY)
+                ?.Crumbs
+                .Count;
+            
+            //Could have an empty list of crumbs
+            if (!tracker.Sensors.SelectMany(f => f.Crumbs).Any())
+                continue;
+            
+            universalDeviceData.FirstReadingDtm =
+                tracker.Sensors.SelectMany(f => f.Crumbs).Min(f => f.CreatedDtm);
+            universalDeviceData.LastReadingDtm =
+                tracker.Sensors.SelectMany(f => f.Crumbs).DefaultIfEmpty()?.Max(f => f.CreatedDtm);
 
             //Calculations
             //These items only get the first instance of sensor with the name Temperature or Humidty/Humidity per device
-            universalDeviceData.TemperatureCount =
-                tracker.Sensors.First(f => f.Name == ModelConstants.FOO1_TEMPERATURE).Crumbs.Count;
             
             universalDeviceData.AverageTemperature = tracker.Sensors
-                .First(f => f.Name == ModelConstants.FOO1_TEMPERATURE).Crumbs.Average(g => g.Value);
-
-            universalDeviceData.HumidityCount = tracker.Sensors
-                .First(f => f.Name == ModelConstants.FOO1_HUMIDTY || f.Name == ModelConstants.FOO2_HUMIDITY).Crumbs
-                .Count;
-
+                .FirstOrDefault(f => f.Name == ModelConstants.FOO1_TEMPERATURE)?.Crumbs
+                .Average(g => g.Value);
             universalDeviceData.AverageHumidity = tracker.Sensors
-                .First(f => f.Name == ModelConstants.FOO1_HUMIDTY || f.Name == ModelConstants.FOO2_HUMIDITY).Crumbs
+                .FirstOrDefault(f => f.Name == ModelConstants.FOO1_HUMIDTY || f.Name == ModelConstants.FOO1_HUMIDITY)
+                ?.Crumbs
                 .Average(g => g.Value);
 
             universalDeviceDataList.Add(universalDeviceData);
@@ -70,6 +88,14 @@ public class UniversalDeviceData
             universalDeviceData.CompanyName = dto.Company;
             universalDeviceData.DeviceId = device.DeviceId;
             universalDeviceData.DeviceName = device.Name;
+            
+            if (!device.SensorData.Any())
+            {
+                universalDeviceData.TemperatureCount = 0;
+                universalDeviceData.HumidityCount = 0;
+                continue;
+            }
+            
             universalDeviceData.FirstReadingDtm = device.SensorData.Min(f => f.DateTime);
             universalDeviceData.LastReadingDtm = device.SensorData.Max(f => f.DateTime);
 
