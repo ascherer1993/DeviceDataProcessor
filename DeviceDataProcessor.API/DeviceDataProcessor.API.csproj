@@ -16,4 +16,8 @@
       <ProjectReference Include="..\DeviceDataProcessor.Services\DeviceDataProcessor.Services.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Output" />
+    </ItemGroup>
+
 </Project>

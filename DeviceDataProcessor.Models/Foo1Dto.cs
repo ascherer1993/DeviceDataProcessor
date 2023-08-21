@@ -9,9 +9,9 @@ public class Foo1Dto
     
     [JsonProperty(PropertyName = "PartnerName")]
     public string PartnerName { get; set; }
-    
+
     [JsonProperty(PropertyName = "Trackers")]
-    public List<Foo1Tracker> Trackers { get; set; }
+    public List<Foo1Tracker> Trackers { get; set; } = new List<Foo1Tracker>();
 }
 
 public class Foo1Tracker
@@ -24,9 +24,9 @@ public class Foo1Tracker
     
     [JsonProperty(PropertyName = "ShipmentStartDtm")]
     public DateTime ShipmentStartDtm { get; set; }
-    
+
     [JsonProperty(PropertyName = "Sensors")]
-    public List<Foo1Sensor> Sensors { get; set; }
+    public List<Foo1Sensor> Sensors { get; set; } = new List<Foo1Sensor>();
 }
 
 public class Foo1Sensor
@@ -36,9 +36,9 @@ public class Foo1Sensor
     
     [JsonProperty(PropertyName = "Name")]
     public string Name { get; set; }
-    
+
     [JsonProperty(PropertyName = "Crumbs")]
-    public List<Foo1Crumb> Crumbs { get; set; }
+    public List<Foo1Crumb> Crumbs { get; set; } = new List<Foo1Crumb>();
 }
 
 public class Foo1Crumb

@@ -7,14 +7,9 @@ public class UniversalDeviceData
     public int? DeviceId { get; set; } // Foo1: Id, Foo2: DeviceID
     public string DeviceName { get; set; } // Foo1: Model, Foo2: Name
 
-    public DateTime?
-        FirstReadingDtm
-    {
-        get;
-        set;
-    } // Foo1: Trackers.Sensors.Crumbs, Foo2: Devices.SensorData public DateTime? LastReadingDtm { get; set; }
+    public DateTime? FirstReadingDtm { get; set; } 
 
-    public DateTime? LastReadingDtm { get; set; } // Foo1: Trackers.Sensors.Crumbs, Foo2: Devices.SensorData
+    public DateTime? LastReadingDtm { get; set; }
 
     //Calculated Values
     public int? TemperatureCount { get; set; }
@@ -62,6 +57,8 @@ public class UniversalDeviceData
 
             //Calculations
             //These items only get the first instance of sensor with the name Temperature or Humidty/Humidity per device
+            //Any additional instances of sensors with those names will be skipped
+            //They could arguably be consolidated
             
             universalDeviceData.AverageTemperature = tracker.Sensors
                 .FirstOrDefault(f => f.Name == ModelConstants.FOO1_TEMPERATURE)?.Crumbs

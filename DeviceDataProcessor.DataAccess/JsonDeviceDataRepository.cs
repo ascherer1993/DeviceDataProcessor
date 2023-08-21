@@ -30,7 +30,6 @@ public class JsonDeviceDataRepository : IDeviceDataRepository
         DateTime currentDateTime = DateTime.Now;
         try
         {
-            //string filePath = @$"{directoryPath}/{currentDateTime:yyyy-MM-dd_hh-mm-ss}_StandardizedList.json";
             string filePath = @$"{directoryPath}/{currentDateTime:yyyy-MM-dd_hh-mm-ss}_StandardizedList.json";
             File.WriteAllText(filePath, json);
             _logger.LogInformation("Successfully wrote to {DirectoryPath}", filePath);

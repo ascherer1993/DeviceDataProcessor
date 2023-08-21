@@ -6,7 +6,7 @@ namespace DeviceDataProcessor.ConsoleApp;
 
 public class App
 {
-    private IDeviceDataConversionService _deviceDataConversionService;
+    private readonly IDeviceDataConversionService _deviceDataConversionService;
     private readonly ILogger<App> _logger;
     
     public App(IDeviceDataConversionService deviceDataConversionService, ILogger<App> logger)

@@ -22,12 +22,12 @@ catch (Exception e)
 IHostBuilder CreateHostBuilder()
 {
     return Host.CreateDefaultBuilder()
-        .ConfigureServices((_, services) =>
+        .ConfigureServices((_, serviceCollection) =>
         {
-            services.AddSingleton<IDeviceDataConversionService, DeviceDataConversionService>();
-            services.AddSingleton<IDeviceDataRepository, JsonDeviceDataRepository>();
-            services.AddSingleton<App>();
-            services.AddLogging(builder =>
+            serviceCollection.AddSingleton<IDeviceDataConversionService, DeviceDataConversionService>();
+            serviceCollection.AddSingleton<IDeviceDataRepository, JsonDeviceDataRepository>();
+            serviceCollection.AddSingleton<App>();
+            serviceCollection.AddLogging(builder =>
             {
                 builder
                     .AddConsole();

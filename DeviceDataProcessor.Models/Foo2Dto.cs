@@ -11,7 +11,7 @@ public class Foo2Dto
     public string Company { get; set; }
 
     [JsonProperty(PropertyName = "Devices")]
-    public List<Foo2Device> Devices { get; set; }
+    public List<Foo2Device> Devices { get; set; } = new List<Foo2Device>();
 }
 
 public class Foo2Device
@@ -24,9 +24,9 @@ public class Foo2Device
     
     [JsonProperty(PropertyName = "StartDateTime")]
     public DateTime StartDateTime { get; set; }
-    
+
     [JsonProperty(PropertyName = "SensorData")]
-    public List<Foo2SensorData> SensorData { get; set; }
+    public List<Foo2SensorData> SensorData { get; set; } = new List<Foo2SensorData>();
 }
 
 public class Foo2SensorData

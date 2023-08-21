@@ -20,6 +20,7 @@ public class DeviceDataConversationServiceTests
     private string _validJsonFoo5;
     private string _validJsonFoo6_NoSensorData;
     private string _validJsonFoo7_NoTrackers;
+    private string _validJsonFoo8_NotPopulatedValue;
     
     public DeviceDataConversationServiceTests()
     {
@@ -46,6 +47,7 @@ public class DeviceDataConversationServiceTests
         _validJsonFoo5 = GetJsonFromFileIfExists(currentPath + "/TestData/DeviceDataFoo5.json");
         _validJsonFoo6_NoSensorData = GetJsonFromFileIfExists(currentPath + "/TestData/DeviceDataFoo6-NoSensorData.json");
         _validJsonFoo7_NoTrackers = GetJsonFromFileIfExists(currentPath + "/TestData/DeviceDataFoo7-NoTrackers.json");
+        _validJsonFoo8_NotPopulatedValue = GetJsonFromFileIfExists(currentPath + "/TestData/DeviceDataFoo8-MissingProperty.json");
     }
 
     private string GetJsonFromFileIfExists(string path)
@@ -220,6 +222,32 @@ public class DeviceDataConversationServiceTests
     {
         //Act
         _sut.ConvertJsonToUnifiedDeviceData(_validJsonFoo1, _validJsonFoo7_NoTrackers);
+        
+        //Assert
+        _dataRepository.Verify(f => f.AddDeviceDataRangeAndSave(It.Is<List<UniversalDeviceData>>(deviceDataList =>
+            deviceDataList.Count == 2
+            && deviceDataList.Count(universalDeviceData => universalDeviceData.CompanyName == "Foo1") == 2
+        )), Times.Once);
+
+        _logger.Verify(logger => logger.Log(
+                It.Is<LogLevel>(logLevel =>
+                    logLevel == LogLevel.Warning || logLevel == LogLevel.Error || logLevel == LogLevel.Critical),
+                It.IsAny<EventId>(),
+                It.IsAny<It.IsAnyType>(),
+                It.IsAny<Exception>(),
+                It.IsAny<Func<It.IsAnyType, Exception, string>>()),
+            Times.Never);
+    }
+    
+    /// <summary>
+    /// Sends two json files. One of the files doesn't contain the property Trackers
+    /// Checks what repo is called with since method returns the response from repo
+    /// </summary>
+    [Fact]
+    public void MissingProperty_FileIsIgnored()
+    {
+        //Act
+        _sut.ConvertJsonToUnifiedDeviceData(_validJsonFoo1, _validJsonFoo8_NotPopulatedValue);
         
         //Assert
         _dataRepository.Verify(f => f.AddDeviceDataRangeAndSave(It.Is<List<UniversalDeviceData>>(deviceDataList =>
