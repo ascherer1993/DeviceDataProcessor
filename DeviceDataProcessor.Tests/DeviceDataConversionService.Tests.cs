@@ -24,20 +24,6 @@ public class DeviceDataConversationServiceTests
     
     public DeviceDataConversationServiceTests()
     {
-        LoadFiles();
-
-        //Mock dependencies
-        _dataRepository = new Mock<IDeviceDataRepository>();
-        _logger = new Mock<ILogger<DeviceDataConversionService>>();
-        
-        _dataRepository.Setup(f => f.AddDeviceDataRangeAndSave(It.IsAny<List<UniversalDeviceData>>()))
-            .Returns(new List<UniversalDeviceData>());
-
-        _sut = new DeviceDataConversionService(_dataRepository.Object, _logger.Object);
-    }
-
-    private void LoadFiles()
-    {
         string currentPath = Directory.GetCurrentDirectory();
 
         _validJsonFoo1 = GetJsonFromFileIfExists(currentPath + "/TestData/DeviceDataFoo1.json");
@@ -48,6 +34,15 @@ public class DeviceDataConversationServiceTests
         _validJsonFoo6_NoSensorData = GetJsonFromFileIfExists(currentPath + "/TestData/DeviceDataFoo6-NoSensorData.json");
         _validJsonFoo7_NoTrackers = GetJsonFromFileIfExists(currentPath + "/TestData/DeviceDataFoo7-NoTrackers.json");
         _validJsonFoo8_NotPopulatedValue = GetJsonFromFileIfExists(currentPath + "/TestData/DeviceDataFoo8-MissingProperty.json");
+
+        //Mock dependencies
+        _dataRepository = new Mock<IDeviceDataRepository>();
+        _logger = new Mock<ILogger<DeviceDataConversionService>>();
+        
+        _dataRepository.Setup(f => f.AddDeviceDataRangeAndSave(It.IsAny<List<UniversalDeviceData>>()))
+            .Returns(new List<UniversalDeviceData>());
+
+        _sut = new DeviceDataConversionService(_dataRepository.Object, _logger.Object);
     }
 
     private string GetJsonFromFileIfExists(string path)
@@ -84,7 +79,7 @@ public class DeviceDataConversationServiceTests
                 It.IsAny<EventId>(),
                 It.IsAny<It.IsAnyType>(),
                 It.IsAny<Exception>(),
-                It.IsAny<Func<It.IsAnyType, Exception, string>>()),
+                It.IsAny<Func<It.IsAnyType, Exception, string>>()!),
             Times.Never);
     }
     
@@ -111,7 +106,7 @@ public class DeviceDataConversationServiceTests
                 It.IsAny<EventId>(),
                 It.IsAny<It.IsAnyType>(),
                 It.IsAny<Exception>(),
-                It.IsAny<Func<It.IsAnyType, Exception, string>>()),
+                It.IsAny<Func<It.IsAnyType, Exception, string>>()!),
             Times.Never);
     }
     
@@ -138,7 +133,7 @@ public class DeviceDataConversationServiceTests
                 It.IsAny<EventId>(),
                 It.IsAny<It.IsAnyType>(),
                 It.IsAny<Exception>(),
-                It.IsAny<Func<It.IsAnyType, Exception, string>>()),
+                It.IsAny<Func<It.IsAnyType, Exception, string>>()!),
             Times.Never);
     }
 
@@ -163,7 +158,7 @@ public class DeviceDataConversationServiceTests
                 It.IsAny<EventId>(),
                 It.IsAny<It.IsAnyType>(),
                 It.IsAny<Exception>(),
-                It.IsAny<Func<It.IsAnyType, Exception, string>>()),
+                It.IsAny<Func<It.IsAnyType, Exception, string>>()!),
             Times.Once);
     }
 
@@ -183,7 +178,7 @@ public class DeviceDataConversationServiceTests
                 It.IsAny<EventId>(),
                 It.IsAny<It.IsAnyType>(),
                 It.IsAny<Exception>(),
-                It.IsAny<Func<It.IsAnyType, Exception, string>>()),
+                It.IsAny<Func<It.IsAnyType, Exception, string>>()!),
             Times.Once);
     }
     
@@ -209,7 +204,7 @@ public class DeviceDataConversationServiceTests
                 It.IsAny<EventId>(),
                 It.IsAny<It.IsAnyType>(),
                 It.IsAny<Exception>(),
-                It.IsAny<Func<It.IsAnyType, Exception, string>>()),
+                It.IsAny<Func<It.IsAnyType, Exception, string>>()!),
             Times.Never);
     }
     
@@ -235,7 +230,7 @@ public class DeviceDataConversationServiceTests
                 It.IsAny<EventId>(),
                 It.IsAny<It.IsAnyType>(),
                 It.IsAny<Exception>(),
-                It.IsAny<Func<It.IsAnyType, Exception, string>>()),
+                It.IsAny<Func<It.IsAnyType, Exception, string>>()!),
             Times.Never);
     }
     
@@ -261,7 +256,7 @@ public class DeviceDataConversationServiceTests
                 It.IsAny<EventId>(),
                 It.IsAny<It.IsAnyType>(),
                 It.IsAny<Exception>(),
-                It.IsAny<Func<It.IsAnyType, Exception, string>>()),
+                It.IsAny<Func<It.IsAnyType, Exception, string>>()!),
             Times.Never);
     }
 }

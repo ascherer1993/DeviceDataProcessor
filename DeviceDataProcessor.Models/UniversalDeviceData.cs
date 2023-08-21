@@ -53,7 +53,7 @@ public class UniversalDeviceData
             universalDeviceData.FirstReadingDtm =
                 tracker.Sensors.SelectMany(f => f.Crumbs).Min(f => f.CreatedDtm);
             universalDeviceData.LastReadingDtm =
-                tracker.Sensors.SelectMany(f => f.Crumbs).DefaultIfEmpty()?.Max(f => f.CreatedDtm);
+                tracker.Sensors.SelectMany(f => f.Crumbs).Max(f => f.CreatedDtm);
 
             //Calculations
             //These items only get the first instance of sensor with the name Temperature or Humidty/Humidity per device

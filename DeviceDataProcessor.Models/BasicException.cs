@@ -10,7 +10,7 @@ public class BasicException : ApplicationException
     {
     }
     
-    public BasicException(string customMessage, HttpStatusCode statusCode, Exception innerException = null) : base(customMessage, innerException)
+    public BasicException(string customMessage, HttpStatusCode statusCode, Exception innerException) : base(customMessage, innerException)
     {
         HttpStatusCode = statusCode;
     }
