@@ -6,7 +6,6 @@ namespace DeviceDataProcessor.ConsoleApp;
 
 public class App
 {
-    //private readonly IConfiguration _configuration;
     private IDeviceDataConversionService _deviceDataConversionService;
     private readonly ILogger<App> _logger;
     
@@ -22,7 +21,6 @@ public class App
         
         if (args.Length < 1)
         {
-            Console.WriteLine("Please include a valid path to at least one json file");
             _logger.LogWarning("Please include a valid path to at least one json file. Exiting...");
             return;
         }
