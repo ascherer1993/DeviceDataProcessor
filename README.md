@@ -37,11 +37,7 @@ dotnet build
 {repositorylocation}/DeviceDataProcessor/DeviceDataProcessor.ConsoleApp/bin/Debug/net6.0
   * To do so in one command from the directory containing the .sln, type in the following command
 ```
-Mac
 cd ./DeviceDataProcessor.ConsoleApp/bin/Debug/net6.0
-
-Windows
-cd .\DeviceDataProcessor.ConsoleApp\bin\Debug\net6.0
 ```
 * Run the application using the following command where {jsonFile1Path} and {jsonFile2Path} are the paths to the files you wish to merge
 ```
@@ -59,6 +55,11 @@ dotnet DeviceDataProcessor.ConsoleApp.dll "E:\Documents\Development\DeviceDataPr
 * The application should run. If it runs successfully, you should see a message with a path to where the merged file with the new format is located
 
 ### Running the web API in terminal/commandline
+* Navigate to the directory containing the .sln file
+* Run the following command
+```
+dotnet build
+```
 * Navigate to the folder containing the API application
     * From the folder containing the sln file, navigate to the folder containing the console app build
       {repositorylocation}/DeviceDataProcessor/DeviceDataProcessor.API/bin/Debug/net6.0
