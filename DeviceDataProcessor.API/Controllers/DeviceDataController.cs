@@ -25,15 +25,13 @@ public class DeviceDataController : ControllerBase
         List<string> jsonFilesAsStrings = new List<string>();
         foreach (var jsonFile in jsonFiles)
         {
-            await using (var stream = new MemoryStream())
+            await using var stream = new MemoryStream();
+            await jsonFile.CopyToAsync(stream);
+            stream.Position = 0;
+            using (var reader = new StreamReader(stream))
             {
-                await jsonFile.CopyToAsync(stream);
-                stream.Position = 0;
-                using (var reader = new StreamReader(stream))
-                {
-                    string json = reader.ReadToEnd();
-                    jsonFilesAsStrings.Add(json);
-                }
+                string json = reader.ReadToEnd();
+                jsonFilesAsStrings.Add(json);
             }
         }
 

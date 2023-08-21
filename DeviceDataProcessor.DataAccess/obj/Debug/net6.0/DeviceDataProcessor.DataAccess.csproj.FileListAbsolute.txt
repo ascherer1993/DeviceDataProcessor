@@ -2,6 +2,7 @@
 /Users/aaron/Documents/Development/Projects/DeviceDataProcessor/DeviceDataProcessor.DataAccess/bin/Debug/net6.0/DeviceDataProcessor.DataAccess.dll
 /Users/aaron/Documents/Development/Projects/DeviceDataProcessor/DeviceDataProcessor.DataAccess/bin/Debug/net6.0/DeviceDataProcessor.DataAccess.pdb
 /Users/aaron/Documents/Development/Projects/DeviceDataProcessor/DeviceDataProcessor.DataAccess/bin/Debug/net6.0/DeviceDataProcessor.Models.dll
+/Users/aaron/Documents/Development/Projects/DeviceDataProcessor/DeviceDataProcessor.DataAccess/bin/Debug/net6.0/Microsoft.Extensions.Logging.Abstractions.dll
 /Users/aaron/Documents/Development/Projects/DeviceDataProcessor/DeviceDataProcessor.DataAccess/bin/Debug/net6.0/DeviceDataProcessor.Models.pdb
 /Users/aaron/Documents/Development/Projects/DeviceDataProcessor/DeviceDataProcessor.DataAccess/obj/Debug/net6.0/DeviceDataProcessor.DataAccess.csproj.AssemblyReference.cache
 /Users/aaron/Documents/Development/Projects/DeviceDataProcessor/DeviceDataProcessor.DataAccess/obj/Debug/net6.0/DeviceDataProcessor.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
@@ -13,4 +14,3 @@
 /Users/aaron/Documents/Development/Projects/DeviceDataProcessor/DeviceDataProcessor.DataAccess/obj/Debug/net6.0/refint/DeviceDataProcessor.DataAccess.dll
 /Users/aaron/Documents/Development/Projects/DeviceDataProcessor/DeviceDataProcessor.DataAccess/obj/Debug/net6.0/DeviceDataProcessor.DataAccess.pdb
 /Users/aaron/Documents/Development/Projects/DeviceDataProcessor/DeviceDataProcessor.DataAccess/obj/Debug/net6.0/ref/DeviceDataProcessor.DataAccess.dll
-/Users/aaron/Documents/Development/Projects/DeviceDataProcessor/DeviceDataProcessor.DataAccess/bin/Debug/net6.0/Microsoft.Extensions.Logging.Abstractions.dll

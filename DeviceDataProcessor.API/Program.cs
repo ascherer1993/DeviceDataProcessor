@@ -1,4 +1,5 @@
 using DeviceDataProcessor.DataAccess;
+using DeviceDataProcessor.Middleware;
 using DeviceDataProcessor.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -26,6 +27,8 @@ app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseMiddleware<GlobalExceptionHandler>();
 
 app.MapControllers();
 

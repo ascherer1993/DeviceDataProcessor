@@ -71,6 +71,15 @@ public class DeviceDataConversationServiceTests
             && deviceDataList.Count(universalDeviceData => universalDeviceData.CompanyName == "Foo1") == 2
             && deviceDataList.Count(universalDeviceData => universalDeviceData.CompanyName == "Foo2") == 2
             )), Times.Once);
+        
+        _logger.Verify(logger => logger.Log(
+                It.Is<LogLevel>(logLevel =>
+                    logLevel == LogLevel.Warning || logLevel == LogLevel.Error || logLevel == LogLevel.Critical),
+                It.IsAny<EventId>(),
+                It.IsAny<It.IsAnyType>(),
+                It.IsAny<Exception>(),
+                It.IsAny<Func<It.IsAnyType, Exception, string>>()),
+            Times.Never);
     }
     
     /// <summary>
@@ -85,12 +94,25 @@ public class DeviceDataConversationServiceTests
         
         //Assert
         _dataRepository.Verify(f => f.AddDeviceDataRangeAndSave(It.Is<List<UniversalDeviceData>>(deviceDataList => 
-            deviceDataList.Count == 4
+            deviceDataList.Count == 3
             && deviceDataList.Count(universalDeviceData => universalDeviceData.CompanyName == "Foo1") == 0
-            && deviceDataList.Count(universalDeviceData => universalDeviceData.CompanyName == "Foo2") == 4
+            && deviceDataList.Count(universalDeviceData => universalDeviceData.CompanyName == "Foo2") == 3
         )), Times.Once);
+        
+        _logger.Verify(logger => logger.Log(
+                It.Is<LogLevel>(logLevel =>
+                    logLevel == LogLevel.Warning || logLevel == LogLevel.Error || logLevel == LogLevel.Critical),
+                It.IsAny<EventId>(),
+                It.IsAny<It.IsAnyType>(),
+                It.IsAny<Exception>(),
+                It.IsAny<Func<It.IsAnyType, Exception, string>>()),
+            Times.Never);
     }
     
+    /// <summary>
+    /// Sends three json files. One of schema Foo1 and two are of schema Foo2.
+    /// Checks what repo is called with since method returns the response from repo
+    /// </summary>
     [Fact]
     public void ValidJson_ThreeFiles_ShouldReturnCombinedList()
     {
@@ -103,17 +125,59 @@ public class DeviceDataConversationServiceTests
             && deviceDataList.Count(universalDeviceData => universalDeviceData.CompanyName == "Foo1") == 2
             && deviceDataList.Count(universalDeviceData => universalDeviceData.CompanyName == "Foo2") == 3
         )), Times.Once);
+
+        _logger.Verify(logger => logger.Log(
+                It.Is<LogLevel>(logLevel =>
+                    logLevel == LogLevel.Warning || logLevel == LogLevel.Error || logLevel == LogLevel.Critical),
+                It.IsAny<EventId>(),
+                It.IsAny<It.IsAnyType>(),
+                It.IsAny<Exception>(),
+                It.IsAny<Func<It.IsAnyType, Exception, string>>()),
+            Times.Never);
     }
-    
+
+    /// <summary>
+    /// Sends two json files. One of the files does not match a schema and is skipped after the exception is caught
+    /// Checks what repo is called with since method returns the response from repo
+    /// </summary>
     [Fact]
-    public void InvalidSchema()
+    public void InvalidSchema_FileIsSkipped()
     {
+        //Act
         _sut.ConvertJsonToUnifiedDeviceData(_validJsonFoo1, _invalidJsonFoo3);
+
+        //Assert
+        _dataRepository.Verify(f => f.AddDeviceDataRangeAndSave(It.Is<List<UniversalDeviceData>>(deviceDataList =>
+            deviceDataList.Count == 2
+            && deviceDataList.Count(universalDeviceData => universalDeviceData.CompanyName == "Foo1") == 2
+        )), Times.Once);
+
+        _logger.Verify(logger => logger.Log(
+                It.Is<LogLevel>(logLevel => logLevel == LogLevel.Warning),
+                It.IsAny<EventId>(),
+                It.IsAny<It.IsAnyType>(),
+                It.IsAny<Exception>(),
+                It.IsAny<Func<It.IsAnyType, Exception, string>>()),
+            Times.Once);
     }
-    
+
+    /// <summary>
+    /// Sends two json files. One of the files contains invalid json and is skipped after the exception is caught
+    /// Checks what repo is called with since method returns the response from repo
+    /// </summary>
     [Fact]
     public void BadJson()
     {
+        //Act
         _sut.ConvertJsonToUnifiedDeviceData(_validJsonFoo1, _badJsonFoo4);
+        
+        //Assert
+        _logger.Verify(logger => logger.Log(
+                It.Is<LogLevel>(logLevel => logLevel == LogLevel.Warning),
+                It.IsAny<EventId>(),
+                It.IsAny<It.IsAnyType>(),
+                It.IsAny<Exception>(),
+                It.IsAny<Func<It.IsAnyType, Exception, string>>()),
+            Times.Once);
     }
 }

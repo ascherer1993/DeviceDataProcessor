@@ -4,7 +4,7 @@ This application is designed to be able to receive json files that are of variou
 
 ## Description
 
-The application can be interacted with both through the API and through a console app. Example json files are provided in the TestData folder at the root level of the solution
+The application can be interacted with through both an API and a console app. Example json files are provided in the TestData folder at the root level of the solution.
 
 ## Getting Started
 
@@ -19,11 +19,12 @@ The application can be interacted with both through the API and through a consol
   * Open command line or terminal and navigate to where you wish to install the project
   * Type in the following command
 ```
-git clone 
+git clone https://github.com/ascherer1993/DeviceDataProcessor.git
 ```
+* The project should clone into the current directory
 
 ## Executing The Application
-In most IDEs, you should be able to open the solution, and run the api and console by selecting it as the startup project. Keep in mind that if you run the console app, you will also have to specify arguments that are paths to json files
+In most IDEs, you should be able to open the solution, and run the api or console by selecting it as the startup project. Keep in mind that if you run the console app, you will also have to specify arguments that are paths to json files. If you run the API, you will need to follow a lot of the steps specified below in the 'Running the web API in terminal/commandline' section.
 
 ### Running the console app in terminal/commandline
 * Navigate to the folder containing the console application
@@ -42,7 +43,7 @@ dotnet DeviceDataProcessor.ConsoleApp.dll DeviceDataFoo1.json DeviceDataFoo2.jso
 ```
 * The application should run. If it runs successfully, you should see a message with a path to where the merged file with the new format is located
 
-### Running the web api in terminal/commandline
+### Running the web API in terminal/commandline
 * Navigate to the folder containing the API application
     * From the folder containing the sln file, navigate to the folder containing the console app build
       {repositorylocation}/DeviceDataProcessor/DeviceDataProcessor.API/bin/Debug/net6.0

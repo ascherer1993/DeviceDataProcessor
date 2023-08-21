@@ -1,60 +1,51 @@
-using System.ComponentModel.DataAnnotations;
-using System.Runtime.Serialization;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Schema;
 
 namespace DeviceDataProcessor.Models;
 
 public class Foo1Dto
 {
+    [JsonProperty(PropertyName = "PartnerId")]
     public int PartnerId { get; set; }
     
+    [JsonProperty(PropertyName = "PartnerName")]
     public string PartnerName { get; set; }
     
+    [JsonProperty(PropertyName = "Trackers")]
     public List<Foo1Tracker> Trackers { get; set; }
 }
 
 public class Foo1Tracker
 {
+    [JsonProperty(PropertyName = "Id")]
     public int Id { get; set; }
     
+    [JsonProperty(PropertyName = "Model")]
     public string Model { get; set; }
     
-    // [DataMember]
-    // [JsonConverter(typeof(DateFormatConverter), "MM-dd-yyyy HH:mm:ss")]
-    // [DataType(DataType.DateTime)]
-    // public DateTime ShipmentStartDtm { get; set; }
+    [JsonProperty(PropertyName = "ShipmentStartDtm")]
     public DateTime ShipmentStartDtm { get; set; }
     
+    [JsonProperty(PropertyName = "Sensors")]
     public List<Foo1Sensor> Sensors { get; set; }
 }
 
 public class Foo1Sensor
 {
+    [JsonProperty(PropertyName = "Id")]
     public int Id { get; set; }
     
+    [JsonProperty(PropertyName = "Name")]
     public string Name { get; set; }
     
+    [JsonProperty(PropertyName = "Crumbs")]
     public List<Foo1Crumb> Crumbs { get; set; }
 }
 
 public class Foo1Crumb
 {
-    // [DataMember]
-    // [JsonConverter(typeof(DateFormatConverter), "MM-dd-yyyy HH:mm:ss")]
-    // [DataType(DataType.DateTime)]
-    // public DateTime CreatedDtm { get; set; }
+    [JsonProperty(PropertyName = "CreatedDtm")]
     public DateTime CreatedDtm { get; set; }
     
+    [JsonProperty(PropertyName = "Value")]
     public double Value { get; set; }
-}
-
-
-public class DateFormatConverter : IsoDateTimeConverter
-{
-    public DateFormatConverter(string format)
-    {
-        base.DateTimeFormat = format;
-    }
 }

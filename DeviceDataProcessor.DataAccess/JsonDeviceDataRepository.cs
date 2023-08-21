@@ -1,4 +1,5 @@
-﻿using DeviceDataProcessor.Models;
+﻿using System.Net;
+using DeviceDataProcessor.Models;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
@@ -15,19 +16,8 @@ public class JsonDeviceDataRepository : IDeviceDataRepository
     public List<UniversalDeviceData> AddDeviceDataRangeAndSave(List<UniversalDeviceData> universalDeviceDataList)
     {
         string currentPath = Directory.GetCurrentDirectory();
-
-        // List<UniversalDeviceData> currentSavedData = new List<UniversalDeviceData>();
-        //
-        //
-        // //Combined list
-        // List<UniversalDeviceData> newDataToSave = currentSavedData.Concat(universalDeviceDataList).ToList();
         
         string json = JsonConvert.SerializeObject(universalDeviceDataList);
-
-        string solutionFolder = AppContext.BaseDirectory;
-        var directoryTest = Test.TryGetSolutionDirectoryInfo(solutionFolder);
-        var directoryTest2 = directoryTest.FullName;
-        
         var directoryPath = @$"{currentPath}/Output";
         
         // Create the directory if it doesn't exist
@@ -40,6 +30,7 @@ public class JsonDeviceDataRepository : IDeviceDataRepository
         DateTime currentDateTime = DateTime.Now;
         try
         {
+            //string filePath = @$"{directoryPath}/{currentDateTime:yyyy-MM-dd_hh-mm-ss}_StandardizedList.json";
             string filePath = @$"{directoryPath}/{currentDateTime:yyyy-MM-dd_hh-mm-ss}_StandardizedList.json";
             File.WriteAllText(filePath, json);
             _logger.LogInformation("Successfully wrote to {DirectoryPath}", filePath);
@@ -47,23 +38,9 @@ public class JsonDeviceDataRepository : IDeviceDataRepository
         catch (Exception e)
         {
             _logger.LogError(e, "Failed to write json to file");
-            throw;
+            throw new BasicException("Failed to save merged json to file.", HttpStatusCode.InternalServerError, e);
         }
         
         return universalDeviceDataList;
-    }
-}
-
-public static class Test
-{
-    public static DirectoryInfo TryGetSolutionDirectoryInfo(string currentPath = null)
-    {
-        var directory = new DirectoryInfo(
-            currentPath ?? Directory.GetCurrentDirectory());
-        while (directory != null && !directory.GetDirectories("JsonOutput").Any())
-        {
-            directory = directory.Parent;
-        }
-        return directory;
     }
 }
